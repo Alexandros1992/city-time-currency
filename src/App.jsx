@@ -4,11 +4,11 @@ import CitySelector from './components/CitySelector.jsx';
 import './App.css';
 
 const cities = [
-    { name: "Athens", country: "Greece", timezone: "Europe/Athens" },
-    { name: "London", country: "United Kingdom", timezone: "Europe/London" },
-    { name: "New York", country: "United States", timezone: "America/New_York" },
-    { name: "Tokyo", country: "Japan", timezone: "Asia/Tokyo" },
-    { name: "Sydney", country: "Australia", timezone: "Australia/Sydney" }
+    { name: "Athens", country: "Greece", timezone: "Europe/Athens", code: "GR" },
+    { name: "London", country: "United Kingdom", timezone: "Europe/London", code: "GB" },
+    { name: "New York", country: "United States", timezone: "America/New_York", code: "US" },
+    { name: "Tokyo", country: "Japan", timezone: "Asia/Tokyo", code: "JP" },
+    { name: "Sydney", country: "Australia", timezone: "Australia/Sydney", code: "AU" },
 ];
 
 function App() {

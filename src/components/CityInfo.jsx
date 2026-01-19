@@ -7,26 +7,41 @@ function CityInfo({ city}) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchCountryData = async () => {
-            setLoading(true);
+  const fetchCountryData = async () => {
+    try {
+      setLoading(true);
 
-            const response = await fetch(`https://restcountries.com/v3.1/alpha/${city.country}`);
-            const data = await response.json();
+      const response = await fetch(
+        `https://restcountries.com/v3.1/alpha/${city.code}`
+      );
 
-            const currencyObj = data[0].currencies;
-            const currencyCode = Object.keys(currencyObj)[0];
+      if (!response.ok) throw new Error("API failed");
 
-            setCurrency({
-                code: currencyCode,
-                name: currencyObj[currencyCode].name,
-                symbol: currencyObj[currencyCode].symbol
-            });
-            setFlag(data[0].flags.svg);
-            setLoading(false);
-        };
+      const data = await response.json();
 
-        fetchCountryData();
-    }, [city]);
+      const countryData = data[0];
+      const currencyObj = countryData.currencies;
+      const currencyCode = Object.keys(currencyObj)[0];
+
+      setCurrency({
+        name: currencyObj[currencyCode].name,
+        code: currencyCode,
+        symbol: currencyObj[currencyCode].symbol
+      });
+
+      setFlag(countryData.flags.svg);
+    } catch (error) {
+      console.error("API Error:", error);
+      setCurrency(null);
+      setFlag("");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchCountryData();
+}, [city]);
+
     if (loading) {
         return <p>Loading city information...</p>;
     }
@@ -34,7 +49,7 @@ function CityInfo({ city}) {
     return (
         <div className = "result">
             <img src={flag} alt="Country Flag" />
-            <p><strong>Country:</strong>{city.country}</p>
+            <p><strong>Country:</strong> {city.country}</p>
             <LiveClock timezone={city.timezone} />
             <p><strong>Currency:</strong> {currency.name} ({currency.code}) - {currency.symbol}</p>
         </div>

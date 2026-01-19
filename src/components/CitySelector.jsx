@@ -1,7 +1,7 @@
-function CitySelector({ cities, onCitySelect }) {
+function CitySelector({ cities, onSelect }) {
     const handleChange = (e) => {
         const selectedCity = cities.find(city => city.name === e.target.value);
-        onCitySelect(selectedCity);
+        onSelect(selectedCity);
     };
 
     return (

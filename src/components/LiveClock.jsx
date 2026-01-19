@@ -1,6 +1,6 @@
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 
-function LiveClock() {
+function LiveClock({ timezone }) {
     const [time, setTime] = useState("");
 
     useEffect(() => {
@@ -21,7 +21,7 @@ function LiveClock() {
     }, [timezone]);
 
     return (
-        <p><strong>Local Time:</strong>{time}</p>
+        <p><strong>Local Time:</strong> {time}</p>
     );
 }
 
