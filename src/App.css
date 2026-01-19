@@ -1,1 +1,44 @@
+body {
+  background: #f2f6fc;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  max-width: 400px;
+  margin: 40px auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+select, button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  font-size: 1rem;
+}
+
+button {
+  background: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #005ed1;
+}
+
+.result {
+  margin-top: 25px;
+  text-align: left;
+}
+
+.result img {
+  width: 60px;
+  margin-bottom: 10px;
+}
 
